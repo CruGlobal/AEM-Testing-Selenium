@@ -22,29 +22,30 @@ public class GiveExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        GiveHomePage giveHomePage = new GiveHomePage();
-
-        giveHomePage.botton();
+        driver.get("https://give-stage2.cru.org/search-results.html?type=ministries");
         // Should see: "Ministries"
         System.out.println("Page Title is: "+ driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        giveHomePage.page1();
+        driver.get("https://give-stage2.cru.org/search-results.html");
         // Should see: "Start A New Gift | Cru"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        giveHomePage.page2();
+        driver.get("https://give-stage2.cru.org/cart.html");
         // Should see: "Cart"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        giveHomePage.page3();
-        // Should see: "Home | Cru"
-        System.out.println("Page title is: " + driver.getTitle());
-        System.out.println("Page URL is: " + driver.getCurrentUrl());
-        giveHomePage.page4();
+        driver.get("https://give-stage2.cru.org/more-ways-to-give.html");
         // Should see: "More Ways to Give"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-
+        driver.get("https://give-stage2.cru.org/search-results.html?type=people");
+        // Should see: "Missionaries"
+        System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("Page URL is: " + driver.getCurrentUrl());
+        driver.get("https://give-stage2.cru.org/search-results.html?type=featured");
+        // Should see: "Feature Opportunities"
+        System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("Page URL is: " + driver.getCurrentUrl());
     }
 
     @Test
@@ -55,18 +56,18 @@ public class GiveExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org");
+        driver.get("https://give-stage2.cru.org/search-results.html");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
         GiveHomePage giveHomePage = new GiveHomePage();
 
         // Check the title of the page
-        System.out.println("Testing Search Icon by Name ");
+        System.out.println("Testing Search Icon by Search by Name ");
 
-        giveHomePage.clickicon();
+        //giveHomePage.clickicon();
 
-        giveHomePage.enterSearchTerm0("steve bratton").submitSearch0();
+        giveHomePage.enterSearchTerm2("steve bratton").submitSearch2();
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
         (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
@@ -85,16 +86,16 @@ public class GiveExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org");
+        driver.get("https://give-stage2.cru.org/search-results.html");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
         GiveHomePage giveHomePage = new GiveHomePage();
 
         // Check the title of the page
-        //System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("Page title is: " + driver.getTitle());
 
-        giveHomePage.clickicon();
+        //giveHomePage.clickicon();
 
         giveHomePage.enterSearchTerm1("0478064").submitSearch1();
         // Google's search is rendered dynamically with JavaScript.
@@ -119,8 +120,6 @@ public class GiveExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        GiveHomePage giveHomePage = new GiveHomePage();
-
     }
 
     @Test
@@ -134,8 +133,6 @@ public class GiveExampleIT extends DriverBase {
         driver.get("https://give-stage2.cru.org/search-results.html?q=Steve%20Bratton");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
-
-        GiveHomePage giveHomePage = new GiveHomePage();
 
     }
 
@@ -151,6 +148,5 @@ public class GiveExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        GiveHomePage giveHomePage = new GiveHomePage();
     }
 }

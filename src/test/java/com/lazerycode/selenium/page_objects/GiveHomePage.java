@@ -8,13 +8,11 @@ import org.openqa.selenium.WebDriver;
 
 public class GiveHomePage {
 
-    Query searchicon = new Query(By.className("search-icon"));
+    Query searchicon = new Query(By.className("search-icon-off"));
     Query searchinput = new Query(By.className("search-input"));
     Query searchbox = new Query(By.name("q"));
-    Query ministries = new Query(By.xpath("//*[@id=\"give-hero\"]/div[2]/div[2]/a/div"));
-    Query startnewgift = new Query(By.xpath("//*[@id=\"sub-navigation\"]/div/ul[2]/li[2]"));
-    Query cart = new Query(By.xpath("//*[@id=\"sub-navigation\"]/div/ul[2]/li[3]"));
-    Query morewaytogive = new Query(By.xpath("//*[@id=\"sub-navigation\"]/div/ul[2]/li[8]"));
+    Query search = new Query(By.xpath("/html/body/div/div/div[1]/div/search-results/div/section[1]/div/div/div/form/div/input"));
+
     Query home = new Query(By.className("sub-nav-logo"));
 
     public GiveHomePage clickicon() {
@@ -47,20 +45,24 @@ public class GiveHomePage {
 
         return this;
     }
+    public GiveHomePage enterSearchTerm2(String searchTerm) {
+        search.findWebElement().clear();
+        search.findWebElement().sendKeys(searchTerm);
 
-    public void botton() {
-        ministries.findWebElement().click();
+        return this;
     }
-    public void page1() {
-        startnewgift.findWebElement().click();
+
+    public GiveHomePage submitSearch2() {
+        search.findWebElement().sendKeys(Keys.ENTER);
+
+        return this;
     }
-    public void page2() {
-        cart.findWebElement().click();
-    }
+
+
     public void page3() {
         home.findWebElement().click();
     }
-    public void page4() { morewaytogive.findWebElement().click(); }
+
 
 }
 

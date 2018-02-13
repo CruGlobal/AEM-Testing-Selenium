@@ -34,7 +34,7 @@ public class JFExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://stage.jesusfilm.org/watch.html");
+        driver.get("https://stage.jesusfilm.org/search.html");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
@@ -43,7 +43,7 @@ public class JFExampleIT extends DriverBase {
         // Check the title of the page
         System.out.println("Page title is: " + driver.getTitle());
 
-        jfHomePage.clickicon();
+        //jfHomePage.clickicon();
 
         jfHomePage.enterSearchTerm("jesus").submitSearch();
         // Google's search is rendered dynamically with JavaScript.
@@ -65,22 +65,22 @@ public class JFExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://stage.jesusfilm.org/search.html?q=jesus");
+        driver.get("https://stage.jesusfilm.org/search.html");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
         JFHomePage jfHomePage = new JFHomePage();
 
-        jfHomePage.clickmovie();
+        //jfHomePage.clickmovie();
 
-        jfHomePage.clicklanguagelist();
+        //jfHomePage.clicklanguagelist();
 
-        jfHomePage.enterSearchLang("arabic").submitSearch();
+        jfHomePage.enterSearchTerm("arabic").submitSearch();
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
         (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("jesus");
+                return d.getTitle().toLowerCase().startsWith("search");
             }
         });
 
@@ -97,27 +97,28 @@ public class JFExampleIT extends DriverBase {
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        JFHomePage jfHomePage = new JFHomePage();
-
-        jfHomePage.logo();
-        //jfHomePage.botton();
-        // Should see: "Browse Films"
-        //System.out.println("Page Title is: "+ driver.getTitle());
-        //System.out.println("Page URL is: " + driver.getCurrentUrl());
-        jfHomePage.page1();
+        driver.get("https://stage.jesusfilm.org/watch.html");
+        // Should see: "Home Page"
+        System.out.println("Page Title is: "+ driver.getTitle());
+        System.out.println("Page URL is: " + driver.getCurrentUrl());
+        driver.get("https://stage.jesusfilm.org/strategies-and-tools.html");
         // Should see: "Watch"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        jfHomePage.page2();
+        driver.get("https://stage.jesusfilm.org/strategies-and-tools.html");
         // Should see: "Strategies & Tools"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        jfHomePage.page3();
+        driver.get("https://stage.jesusfilm.org/how-to-help.html");
         // Should see: "How To Help"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-        jfHomePage.page4();
+        driver.get("https://stage.jesusfilm.org/about.html");
         // Should see: "About"
+        System.out.println("Page title is: " + driver.getTitle());
+        System.out.println("Page URL is: " + driver.getCurrentUrl());
+        driver.get("https://stage.jesusfilm.org/blog-and-stories.html");
+        // Should see: "Blog & Stories"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
     }
