@@ -2,6 +2,7 @@ package com.lazerycode.selenium.tests;
 
 import com.lazerycode.selenium.DriverBase;
 import com.lazerycode.selenium.page_objects.JFHomePage;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -15,6 +16,7 @@ public class JFExampleIT extends DriverBase {
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
         WebDriver driver = getDriver();
+        driver.manage().window().setSize(new Dimension(1124, 850));
 
         // And now use this to visit Google
         driver.get("https://stage.jesusfilm.org");

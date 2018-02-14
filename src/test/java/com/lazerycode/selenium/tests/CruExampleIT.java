@@ -3,6 +3,7 @@ package com.lazerycode.selenium.tests;
 import com.lazerycode.selenium.DriverBase;
 import com.lazerycode.selenium.page_objects.CruHomePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -16,6 +17,7 @@ public class CruExampleIT extends DriverBase {
         // Notice that the remainder of the code relies on the interface,
         // not the implementation.
         WebDriver driver = getDriver();
+        driver.manage().window().setSize(new Dimension(1124, 850));
 
         // And now use this to visit Google
         driver.get("https://stage.cru.org");
@@ -86,7 +88,7 @@ public class CruExampleIT extends DriverBase {
         WebDriver driver = getDriver();
 
         // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org/search-results.html");
+        driver.get("https://stage.cru.org/search-results.html");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
