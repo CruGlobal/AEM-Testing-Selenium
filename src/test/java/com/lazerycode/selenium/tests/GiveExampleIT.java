@@ -12,10 +12,8 @@ import org.testng.annotations.Test;
 public class GiveExampleIT extends DriverBase {
 
     @Test
-    public void GiveBrowsePagesExample() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
+    public void Give() throws Exception {
+
         WebDriver driver = getDriver();
         driver.manage().window().setSize(new Dimension(1124, 850));
 
@@ -48,107 +46,34 @@ public class GiveExampleIT extends DriverBase {
         // Should see: "Feature Opportunities"
         System.out.println("Page title is: " + driver.getTitle());
         System.out.println("Page URL is: " + driver.getCurrentUrl());
-    }
 
-    @Test
-    public void GiveSearchName() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org/search-results.html");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
-        GiveHomePage giveHomePage = new GiveHomePage();
-
-        // Check the title of the page
-        System.out.println("Testing Search Icon by Search by Name ");
-
-        //giveHomePage.clickicon();
-
-        giveHomePage.enterSearchTerm2("steve bratton").submitSearch2();
-        // Google's search is rendered dynamically with JavaScript.
+        // Test Search by Name
+        driver.get("https://give-stage2.cru.org/search-results.html?q=steve%20bratton");
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
+        (new WebDriverWait(driver, 5)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                return d.getTitle().toLowerCase().startsWith("search");
             }
         });
 
-    }
+        // Test Search by designation
+        driver.get("https://give-stage2.cru.org/search-results.html?q=0478064");
 
-    @Test
-    public void GiveClickSearch() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org/search-results.html");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
-        GiveHomePage giveHomePage = new GiveHomePage();
-
-        // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
-
-        //giveHomePage.clickicon();
-
-        giveHomePage.enterSearchTerm1("0478064").submitSearch1();
-        // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("search");
+        (new WebDriverWait(driver, 5)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d1) {
+                return d1.getTitle().toLowerCase().startsWith("search");
             }
         });
 
-    }
-
-    @Test
-    public void GiveBrowseDesignation() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
+        // Browse by designation
         driver.get("https://give-stage2.cru.org/0478064");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
-    }
-
-    @Test
-    public void GiveBrowseDirectLink() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org/search-results.html?q=Steve%20Bratton");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
-    }
-
-    @Test
-    public void GiveOpenHome() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://give-stage2.cru.org");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
+        /// Wait for the page to load, timeout after 10 seconds
+        (new WebDriverWait(driver, 5)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d2) {
+                return d2.getTitle().toLowerCase().startsWith("steve");
+            }
+        });
 
     }
 }

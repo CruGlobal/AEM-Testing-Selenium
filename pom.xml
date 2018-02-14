@@ -65,6 +65,8 @@
         <proxyEnabled>false</proxyEnabled>
         <proxyHost/>
         <proxyPort/>
+        <testUser/>
+        <testPassword/>
     </properties>
 
     <dependencies>
@@ -178,6 +180,9 @@
                                 <proxyEnabled>${proxyEnabled}</proxyEnabled>
                                 <proxyHost>${proxyHost}</proxyHost>
                                 <proxyPort>${proxyPort}</proxyPort>
+                                <testUser>${testUser}</testUser>
+                                <testPassword>${testPassword}</testPassword>
+
 
                                 <!--Set properties passed in by the driver binary downloader-->
                                 <phantomjs.binary.path>${phantomjs.binary.path}</phantomjs.binary.path>

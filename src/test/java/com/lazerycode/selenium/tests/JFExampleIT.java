@@ -26,31 +26,14 @@ public class JFExampleIT extends DriverBase {
         // Check the title of the page
         System.out.println("Testing site: stage.jesusfilm.org: " );
         System.out.println("Page title is: " + driver.getTitle());
-    }
 
-    @Test
-    public void JFSearchMovies() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://stage.jesusfilm.org/search.html");
+        // Test Search look for movie
+        driver.get("https://stage.jesusfilm.org/search.html?q=jesus");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        JFHomePage jfHomePage = new JFHomePage();
-
-        // Check the title of the page
-        System.out.println("Page title is: " + driver.getTitle());
-
-        //jfHomePage.clickicon();
-
-        jfHomePage.enterSearchTerm("jesus").submitSearch();
-        // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
+        (new WebDriverWait(driver, 5)).until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver d) {
                 return d.getTitle().toLowerCase().startsWith("search");
             }
@@ -58,47 +41,20 @@ public class JFExampleIT extends DriverBase {
         // Should see: "Search Results - Cru"
         System.out.println("Page title is: " + driver.getTitle());
 
-    }
-    @Test
-    public void JFSearchLanguage() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://stage.jesusfilm.org/search.html");
+        // Test Search look for language
+        driver.get("https://stage.jesusfilm.org/search.html?q=arabic");
         // Alternatively the same thing can be done like this
         // driver.navigate().to("http://www.google.com");
 
-        JFHomePage jfHomePage = new JFHomePage();
-
-        //jfHomePage.clickmovie();
-
-        //jfHomePage.clicklanguagelist();
-
-        jfHomePage.enterSearchTerm("arabic").submitSearch();
         // Google's search is rendered dynamically with JavaScript.
         // Wait for the page to load, timeout after 10 seconds
-        (new WebDriverWait(driver, 60)).until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver d) {
-                return d.getTitle().toLowerCase().startsWith("search");
+        (new WebDriverWait(driver, 5)).until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver d1) {
+                return d1.getTitle().toLowerCase().startsWith("search");
             }
         });
 
-    }
-    @Test
-    public void JFBrowsePages() throws Exception {
-        // Create a new WebDriver instance
-        // Notice that the remainder of the code relies on the interface,
-        // not the implementation.
-        WebDriver driver = getDriver();
-
-        // And now use this to visit Google
-        driver.get("https://stage.jesusfilm.org");
-        // Alternatively the same thing can be done like this
-        // driver.navigate().to("http://www.google.com");
-
+        // Browse menu pages
         driver.get("https://stage.jesusfilm.org/watch.html");
         // Should see: "Home Page"
         System.out.println("Page Title is: "+ driver.getTitle());
